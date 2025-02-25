@@ -1,9 +1,9 @@
 ---
-title: "55555"
+title: "Projects"
 layout: category
-permalink: /categories/categories5/
+permalink: /categories/projects/
 author_profile: true
-taxonomy: Categories5
+taxonomy: category
 sidebar:
   nav: "categories"
 ---

@@ -1,13 +1,13 @@
 # main links
 main:
   - title: "Home"
-    url: https://choiiis.github.io/
+    url: https://kyeonkim.github.io/
 
   - title: "About"
     url: /about/
 
   - title: "GitHub"
-    url: https://github.com/choiiis
+    url: https://github.com/kyeonkim
 
   # - title: "Projects"
   #   url: /projects/
@@ -18,25 +18,25 @@ main:
 # sidebar navigation (categories)
 # 2022.09.24 sidebar ver2.0 : main-sub version
 categories:
-  - title: "Title1"
+  - title: "CS"
     children:
-      - title: "Categories1"
-        url: /categories/categories1/
-      - title: "Categories2"
-        url: /categories/categories2/
-      - title: "Categories3"
-        url: /categories/categories3/
-      - title: "Categories4"
-        url: /categories/categories4/
+      - title: "Data Structures"
+        url: /categories/data-structures/
+      - title: "Algorithms"
+        url: /categories/algorithms/
+      - title: "Operating Systems"
+        url: /categories/operating-systems/
+      - title: "Computer Networks"
+        url: /categories/computer-networks/
+      - title: "Database"
+        url: /categories/database/
+        url: /categories/database/
 
-  - title: "Title2"
-    children:
-      - title: "Categories5"
-        url: /categories/categories5/
-      - title: "Categories6"
-        url: /categories/categories6/
+  - title: "Blog"
+    url: /categories/blog/
 
-  - title: "Title3"
-    children:
-      - title: "Categories7"
-        url: /categories/categories7/
+  - title: "Tech"
+    url: /categories/tech/
+
+  - title: "Projects"
+    url: /categories/projects/

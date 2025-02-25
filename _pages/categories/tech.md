@@ -1,9 +1,9 @@
 ---
-title: "77777"
+title: "Tech"
 layout: category
-permalink: /categories/categories7/
+permalink: /categories/tech/
 author_profile: true
-taxonomy: Categories7
+taxonomy: category
 sidebar:
   nav: "categories"
 ---
