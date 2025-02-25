@@ -4,11 +4,11 @@ excerpt: "database의 기본 개념을 정리합니다."
 
 categories:
   - CS
-  - Database
+  - database
 tags:
   - [database, example, test]
 
-permalink: /database/example-post/
+permalink: categories/database/example-post/
 
 toc: true
 toc_sticky: true

@@ -3,11 +3,11 @@ title: "[포스팅 예시] tech 개요"
 excerpt: "tech의 기본 개념을 정리합니다."
 
 categories:
-  - Tech
+  - tech
 tags:
   - [tech, example, test]
 
-permalink: /tech/example-post/
+permalink: /categories/tech/example-post/
 
 toc: true
 toc_sticky: true

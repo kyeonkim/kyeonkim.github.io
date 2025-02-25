@@ -3,11 +3,11 @@ title: "[포스팅 예시] projects 개요"
 excerpt: "projects의 기본 개념을 정리합니다."
 
 categories:
-  - Projects
+  - projects
 tags:
   - [projects, example, test]
 
-permalink: /projects/example-post/
+permalink: /categories/projects/example-post/
 
 toc: true
 toc_sticky: true

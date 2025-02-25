@@ -4,11 +4,11 @@ excerpt: "operating systems의 기본 개념을 정리합니다."
 
 categories:
   - CS
-  - Operating Systems
+  - operating-systems
 tags:
   - [operating systems, example, test]
 
-permalink: /operating-systems/example-post/
+permalink: /categories/operating-systems/example-post/
 
 toc: true
 toc_sticky: true

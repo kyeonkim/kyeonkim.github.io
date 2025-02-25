@@ -4,11 +4,11 @@ excerpt: "data structures의 기본 개념을 정리합니다."
 
 categories:
   - CS
-  - Data Structures
+  - data-structures
 tags:
   - [data structures, example, test]
 
-permalink: /data-structures/example-post/
+permalink: /categories/data-structures/example-post/
 
 toc: true
 toc_sticky: true

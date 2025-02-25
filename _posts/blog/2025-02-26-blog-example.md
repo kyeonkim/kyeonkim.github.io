@@ -3,11 +3,11 @@ title: "[포스팅 예시] blog 개요"
 excerpt: "blog의 기본 개념을 정리합니다."
 
 categories:
-  - Blog
+  - blog
 tags:
   - [blog, example, test]
 
-permalink: /blog/example-post/
+permalink: /categories/blog/example-post/
 
 toc: true
 toc_sticky: true

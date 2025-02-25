@@ -4,11 +4,11 @@ excerpt: "algorithms의 기본 개념을 정리합니다."
 
 categories:
   - CS
-  - Algorithms
+  - algorithms
 tags:
   - [algorithms, example, test]
 
-permalink: /algorithms/example-post/
+permalink: /categories/algorithms/example-post/
 
 toc: true
 toc_sticky: true
