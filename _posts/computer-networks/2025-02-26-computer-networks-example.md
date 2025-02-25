@@ -3,12 +3,11 @@ title: "[포스팅 예시] computer networks 개요"
 excerpt: "computer networks의 기본 개념을 정리합니다."
 
 categories:
-  - CS
-  - computer-networks
+  - Computer Networks
 tags:
   - [computer networks, example, test]
 
-permalink: /categories/computer-networks/example-post/
+permalink: /computer-networks/example-post/
 
 toc: true
 toc_sticky: true

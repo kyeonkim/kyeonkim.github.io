@@ -3,7 +3,7 @@ title: "Algorithms"
 layout: category
 permalink: /categories/algorithms/
 author_profile: true
-taxonomy: category
+taxonomy: Algorithms
 sidebar:
   nav: "categories"
 ---

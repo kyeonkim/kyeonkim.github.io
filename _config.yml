@@ -28,6 +28,7 @@ url: "https://kyeonkim.github.io" # 블로그 URL
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: "kyeonkim/kyeonkim.github.io" # GitHub Repo 이름
 teaser: #
+future: true
 
 # logo                     : # 블로그명 앞에 로고 추가하고 싶을 경우 사용
 masthead_title: # overrides the website title displayed in the masthead, use " " for no title
@@ -150,6 +151,8 @@ footer:
 include:
   - .htaccess
   - _pages
+  - _posts
+
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -210,7 +213,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul
 
 # Plugins (previously gems:)
 plugins:

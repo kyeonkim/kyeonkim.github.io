@@ -3,12 +3,11 @@ title: "[포스팅 예시] database 개요"
 excerpt: "database의 기본 개념을 정리합니다."
 
 categories:
-  - CS
-  - database
+  - Database
 tags:
   - [database, example, test]
 
-permalink: categories/database/example-post/
+permalink: /database/example-post/
 
 toc: true
 toc_sticky: true

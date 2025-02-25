@@ -1,9 +1,9 @@
 ---
-title: "Blog"
+title: "11111"
 layout: category
 permalink: /categories/blog/
 author_profile: true
-taxonomy: category
+taxonomy: Blog
 sidebar:
   nav: "categories"
 ---

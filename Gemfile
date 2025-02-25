@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 gemspec
 
-gem 'jekyll-admin', group: :jekyll_plugins
+gem 'jekyll', '~> 4.2'
 gem 'jekyll-sitemap'
+gem 'webrick', '~> 1.7'
+gem 'rack', '>= 2.2'

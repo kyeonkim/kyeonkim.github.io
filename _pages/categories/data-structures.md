@@ -3,7 +3,7 @@ title: "Data Structures"
 layout: category
 permalink: /categories/data-structures/
 author_profile: true
-taxonomy: category
+taxonomy: Data Structures
 sidebar:
   nav: "categories"
 ---

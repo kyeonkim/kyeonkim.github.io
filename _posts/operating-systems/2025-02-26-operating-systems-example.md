@@ -3,12 +3,11 @@ title: "[포스팅 예시] operating systems 개요"
 excerpt: "operating systems의 기본 개념을 정리합니다."
 
 categories:
-  - CS
-  - operating-systems
+  - Operating Systems
 tags:
   - [operating systems, example, test]
 
-permalink: /categories/operating-systems/example-post/
+permalink: /operating-systems/example-post/
 
 toc: true
 toc_sticky: true

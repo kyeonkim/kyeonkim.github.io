@@ -3,7 +3,7 @@ title: "Database"
 layout: category
 permalink: /categories/database/
 author_profile: true
-taxonomy: category
+taxonomy: Database
 sidebar:
   nav: "categories"
 ---

@@ -3,12 +3,11 @@ title: "[포스팅 예시] algorithms 개요"
 excerpt: "algorithms의 기본 개념을 정리합니다."
 
 categories:
-  - CS
-  - algorithms
+  - Algorithms
 tags:
   - [algorithms, example, test]
 
-permalink: /categories/algorithms/example-post/
+permalink: /algorithms/example-post/
 
 toc: true
 toc_sticky: true

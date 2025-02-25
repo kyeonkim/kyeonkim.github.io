@@ -3,7 +3,7 @@ title: "Tech"
 layout: category
 permalink: /categories/tech/
 author_profile: true
-taxonomy: category
+taxonomy: Tech
 sidebar:
   nav: "categories"
 ---

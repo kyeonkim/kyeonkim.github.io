@@ -3,7 +3,7 @@ title: "CS"
 layout: category
 permalink: /categories/cs/
 author_profile: true
-taxonomy: category
+taxonomy: cs
 sidebar:
   nav: "categories"
 ---
