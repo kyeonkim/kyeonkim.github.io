@@ -5,7 +5,7 @@ excerpt: "자료 구조 중 힙에 대해 알아보고 직접 구현해보자!"
 categories:
   - Data Structures
 tags:
-  - [data structures, example, test]
+  - [data structures, heap]
 
 permalink: /data-structures/heap-post/
 

@@ -5,7 +5,7 @@ excerpt: "안녕하세요! 개발자 kyeonkim 입니다. 배운 내용을 정리
 categories:
   - Blog
 tags:
-  - [blog, example, test]
+  - [devlog, tech blog]
 
 permalink: /blog/tech-blog-start/
 
