@@ -1,0 +1,60 @@
+# Site
+name: "어떻게 만들었을까"
+title: "어떻게 만들었을까"
+description: "우리가 매일 쓰는 서비스, 어떻게 만들었을까를 파헤치는 기술 블로그"
+logo: ''
+favicon: 'assets/images/favicon.ico'
+url: "https://kyeonkim.github.io"
+baseurl: ""
+include: ["_pages"]
+permalink: /:title/
+
+# Authors
+authors:
+  kyeonkim:
+    name: kyeonkim
+    display_name: kyeonkim
+    avatar: 'assets/images/avatar.png'
+    email: kyeonkim5021@gmail.com
+    web: https://github.com/kyeonkim
+    description: "\"어떻게 만들었을까\" 시리즈를 연재합니다."
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+
+# Pagination
+paginate: 6
+paginate_path: /page:num/
+
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: ""
+adsense-data-ad-slot: ""
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "disabled"
+
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock, docs, vendor]
