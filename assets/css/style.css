@@ -285,7 +285,7 @@ img { max-width: 100%; height: auto; }
   gap: 8px;
   font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 48px;
+  margin-bottom: 20px;
 }
 .post-meta-avatar {
   width: 32px;
@@ -311,9 +311,34 @@ img { max-width: 100%; height: auto; }
 }
 .post-back:hover { color: var(--text); }
 
+/* Action bar */
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  margin-bottom: 48px;
+}
+.post-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.post-comment-button {
+  background: none;
+  border: 0;
+  padding: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  transition: color 0.15s;
+}
+.post-comment-button:hover { color: var(--text); }
+
 /* Clap button */
 .post-clap {
-  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 2px;
@@ -347,7 +372,6 @@ img { max-width: 100%; height: auto; }
 /* Share button */
 .post-share {
   position: relative;
-  margin-left: 10px;
   display: inline-flex;
   align-items: center;
 }
