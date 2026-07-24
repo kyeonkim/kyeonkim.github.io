@@ -725,3 +725,14 @@ img { max-width: 100%; height: auto; }
   color: #24292f;
   font-weight: bold;
 }
+
+/* About 등 프로필 프레임 안의 일반 페이지 */
+.profile-page-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text, #242424);
+}
+
+.site-footer-icons { display: flex; align-items: center; gap: 16px; }
+.site-footer-icons a { color: var(--text-secondary, #6B6B6B); display: inline-flex; }
+.site-footer-icons a:hover { color: var(--text, #242424); }

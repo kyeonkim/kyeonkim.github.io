@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign author = site.authors.kyeonkim %}
+<div class="profile-wrap">
+
+  <div class="profile-main">
+    <h1 class="profile-name">{{ author.name }}</h1>
+
+    <nav class="profile-tabs">
+      <a href="{{ site.baseurl }}/" class="{% if page.layout == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ site.baseurl }}/about" class="{% if page.url == '/about' %}active{% endif %}">About</a>
+    </nav>
+
+    <div class="profile-page-content">
+      {{ content }}
+    </div>
+  </div>
+
+  <aside class="profile-sidebar">
+    <img class="sidebar-avatar" src="{{ site.baseurl }}/{{ author.avatar }}" alt="{{ author.display_name }}">
+    <div class="sidebar-name">{{ author.display_name }}</div>
+    <p class="sidebar-bio">{{ author.description }}</p>
+    <div class="sidebar-link-row">
+      <span class="sidebar-link-label">Github</span>
+      <a class="sidebar-link" href="{{ author.web }}" target="_blank" rel="noopener">{{ author.web | remove: "https://" }}</a>
+    </div>
+  </aside>
+
+</div>
