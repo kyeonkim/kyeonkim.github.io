@@ -311,10 +311,43 @@ img { max-width: 100%; height: auto; }
 }
 .post-back:hover { color: var(--text); }
 
+/* Clap button */
+.post-clap {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.post-clap-button {
+  background: none;
+  border: 0;
+  padding: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  transition: color 0.15s;
+}
+.post-clap-button:hover { color: var(--text); }
+.post-clap-button svg { transition: transform 0.15s ease; }
+.post-clap-button.is-clapped svg { animation: clap-pop 0.25s ease; }
+@keyframes clap-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.post-clap-count {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.post-clap.is-maxed .post-clap-button {
+  color: var(--accent, #1A8917);
+  cursor: default;
+}
+
 /* Share button */
 .post-share {
   position: relative;
-  margin-left: auto;
+  margin-left: 10px;
   display: inline-flex;
   align-items: center;
 }

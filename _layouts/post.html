@@ -17,6 +17,22 @@ layout: default
       <span>{{ words | divided_by: 250 | plus: 1 }} min read</span>
       <span class="post-meta-dot">&middot;</span>
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %-m월 %-d일" }}</time>
+      <span class="post-clap">
+        <button class="post-clap-button" type="button" aria-label="박수 보내기" onclick="clapPost(this)">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4.2" y1="6.2" x2="2.6" y2="4.4"/>
+            <line x1="7.8" y1="4.6" x2="7.2" y2="2.3"/>
+            <line x1="11.4" y1="4.4" x2="12.2" y2="2.2"/>
+            <g transform="translate(4.9,4.9) scale(0.79)">
+              <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+              <path d="M14 10V4a2 2 0 0 0-4 0v2"/>
+              <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+              <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+            </g>
+          </svg>
+        </button>
+        <span class="post-clap-count" aria-live="polite"></span>
+      </span>
       <span class="post-share">
         <button class="post-share-button" type="button" aria-label="공유" onclick="sharePost(this)">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.7" x2="15.4" y2="6.3"/><line x1="8.6" y1="13.3" x2="15.4" y2="17.7"/></svg>
@@ -64,7 +80,7 @@ layout: default
       data-category-id="DIC_kwDOTh1Pas4DB2jl"
       data-mapping="pathname"
       data-strict="0"
-      data-reactions-enabled="1"
+      data-reactions-enabled="0"
       data-emit-metadata="0"
       data-input-position="top"
       data-theme="light"
@@ -77,6 +93,57 @@ layout: default
 </article>
 
 <script>
+(function () {
+  var API = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'kyeonkim-blog';
+  var MAX_CLAPS = 10;
+  var key = ('clap' + location.pathname).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
+  var storageKey = 'claps:' + location.pathname;
+  var clap = document.querySelector('.post-clap');
+  var countEl = clap.querySelector('.post-clap-count');
+  var count = null;
+
+  function myClaps() {
+    try { return parseInt(localStorage.getItem(storageKey), 10) || 0; } catch (e) { return 0; }
+  }
+
+  function render() {
+    countEl.textContent = count === null ? '' : String(count);
+    if (myClaps() >= MAX_CLAPS) clap.classList.add('is-maxed');
+  }
+
+  window.clapPost = function (btn) {
+    var mine = myClaps();
+    if (mine >= MAX_CLAPS) return;
+    try { localStorage.setItem(storageKey, String(mine + 1)); } catch (e) {}
+    count = (count || 0) + 1;
+    render();
+    btn.classList.remove('is-clapped');
+    void btn.offsetWidth;
+    btn.classList.add('is-clapped');
+    fetch(API + '/hit/' + NAMESPACE + '/' + key)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data && typeof data.value === 'number') { count = data.value; render(); }
+      })
+      .catch(function () {});
+  };
+
+  fetch(API + '/get/' + NAMESPACE + '/' + key)
+    .then(function (res) {
+      if (res.status === 404) return { value: 0 };
+      if (!res.ok) return null;
+      return res.json();
+    })
+    .then(function (data) {
+      if (data && typeof data.value === 'number') { count = data.value; }
+      render();
+    })
+    .catch(function () { render(); });
+
+  render();
+})();
+
 function sharePost(btn) {
   var url = location.href;
   var title = document.title;
