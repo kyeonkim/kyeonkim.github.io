@@ -1,7 +1,7 @@
 # Site
-name: "테스트"
-title: "테스트"
-description: "우리가 매일 쓰는 서비스, 어떻게 만들었을까를 파헤치는 기술 블로그"
+name: "step by step"
+title: "step by step"
+description: "한 걸음씩 만들며 배웁니다"
 favicon: 'assets/images/favicon.ico'
 url: "https://kyeonkim.github.io"
 baseurl: ""
