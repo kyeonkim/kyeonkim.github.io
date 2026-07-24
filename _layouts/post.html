@@ -17,6 +17,8 @@ layout: default
       <span>{{ words | divided_by: 250 | plus: 1 }} min read</span>
       <span class="post-meta-dot">&middot;</span>
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %-m월 %-d일" }}</time>
+      <span class="post-meta-views" hidden><span class="post-meta-dot">&middot;</span>
+      <span>조회 <span class="post-meta-view-count"></span></span></span>
     </div>
     <div class="post-actions">
       <div class="post-actions-left">
@@ -104,7 +106,7 @@ layout: default
 (function () {
   var API = 'https://abacus.jasoncameron.dev';
   var NAMESPACE = 'kyeonkim-blog';
-  var MAX_CLAPS = 10;
+  var MAX_CLAPS = 1;
   var key = ('clap' + location.pathname).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
   var storageKey = 'claps:' + location.pathname;
   var clap = document.querySelector('.post-clap');
@@ -150,6 +152,30 @@ layout: default
     .catch(function () { render(); });
 
   render();
+})();
+
+(function () {
+  var API = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'kyeonkim-blog';
+  var key = ('view' + location.pathname).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
+  var seenKey = 'views:' + location.pathname;
+  var viewsEl = document.querySelector('.post-meta-views');
+  if (!viewsEl) return;
+  var seen = false;
+  try { seen = !!sessionStorage.getItem(seenKey); } catch (e) {}
+  fetch(API + (seen ? '/get/' : '/hit/') + NAMESPACE + '/' + key)
+    .then(function (res) {
+      if (!res.ok) return null;
+      return res.json();
+    })
+    .then(function (data) {
+      if (data && typeof data.value === 'number') {
+        if (!seen) { try { sessionStorage.setItem(seenKey, '1'); } catch (e) {} }
+        viewsEl.querySelector('.post-meta-view-count').textContent = String(data.value);
+        viewsEl.hidden = false;
+      }
+    })
+    .catch(function () {});
 })();
 
 function sharePost(btn) {

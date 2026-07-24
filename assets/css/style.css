@@ -204,15 +204,19 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
 }
-.post-item-claps {
+.post-item-claps,
+.post-item-views {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   color: var(--text-secondary);
 }
-.post-item-claps svg { display: block; }
-.post-item-claps .post-item-meta-dot { margin: 0 2px 0 4px; }
-.post-item-claps[hidden] { display: none; }
+.post-item-claps svg,
+.post-item-views svg { display: block; }
+.post-item-claps .post-item-meta-dot,
+.post-item-views .post-item-meta-dot { margin: 0 2px 0 4px; }
+.post-item-claps[hidden],
+.post-item-views[hidden] { display: none; }
 .post-item-thumb {
   flex-shrink: 0;
   width: 160px;
@@ -306,6 +310,12 @@ img { max-width: 100%; height: auto; }
   margin-right: 4px;
 }
 .post-meta-author { color: var(--text); }
+.post-meta-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.post-meta-views[hidden] { display: none; }
 
 /* Back button */
 .post-back {
