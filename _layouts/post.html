@@ -16,7 +16,7 @@ layout: default
       <span class="post-meta-dot">&middot;</span>
       <span>{{ words | divided_by: 250 | plus: 1 }} min read</span>
       <span class="post-meta-dot">&middot;</span>
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %-m월 %-d일" }}</time>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
       <span class="post-meta-views" hidden><span class="post-meta-dot">&middot;</span>
       <span class="post-meta-views-label" title="조회수"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="post-meta-view-count"></span></span></span>
     </div>
@@ -139,6 +139,17 @@ layout: default
     });
   }
 
+  // Abacus /hit는 IP당 10초 30요청 제한 — 429 등 실패 시 창이 지나도록 기다렸다 재시도
+  function hitWithRetry(path, delays) {
+    delays = delays || [4000, 9000];
+    return fetchValue(path).then(function (data) {
+      if (data && typeof data.value === 'number') return data;
+      if (!delays.length) return null;
+      return new Promise(function (resolve) { setTimeout(resolve, delays[0]); })
+        .then(function () { return hitWithRetry(path, delays.slice(1)); });
+    });
+  }
+
   window.clapPost = function (btn) {
     if (pending) return;
     pending = true;
@@ -149,7 +160,7 @@ layout: default
     btn.classList.remove('is-clapped');
     void btn.offsetWidth;
     btn.classList.add('is-clapped');
-    fetchValue('/hit/' + NAMESPACE + '/' + (cancel ? keyDown : keyUp))
+    hitWithRetry('/hit/' + NAMESPACE + '/' + (cancel ? keyDown : keyUp))
       .then(function (data) {
         if (!data || typeof data.value !== 'number') throw new Error('hit failed');
         if (cancel) down = data.value; else up = data.value;

@@ -5,16 +5,36 @@
     return (prefix + path).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
   }
 
+  // Abacus는 IP당 10초에 30요청 제한 — 동시 요청을 4개로 묶어 한도 소진을 방지
+  var queue = [];
+  var active = 0;
+  var CONCURRENCY = 4;
+  function drain() {
+    while (active < CONCURRENCY && queue.length) {
+      var job = queue.shift();
+      active += 1;
+      job().then(function () { active -= 1; drain(); }, function () { active -= 1; drain(); });
+    }
+  }
+  function enqueue(fn) {
+    return new Promise(function (resolve) {
+      queue.push(function () { return fn().then(resolve, function () { resolve(null); }); });
+      drain();
+    });
+  }
+
   function fetchValue(key) {
-    return fetch(API + key)
-      .then(function (res) {
-        if (res.status === 404) return { value: 0 };
-        if (!res.ok) return null;
-        return res.json();
-      })
-      .then(function (data) {
-        return data && typeof data.value === 'number' ? data.value : null;
-      });
+    return enqueue(function () {
+      return fetch(API + key)
+        .then(function (res) {
+          if (res.status === 404) return { value: 0 };
+          if (!res.ok) return null;
+          return res.json();
+        })
+        .then(function (data) {
+          return data && typeof data.value === 'number' ? data.value : null;
+        });
+    });
   }
 
   function show(el, countSelector, value) {
@@ -22,15 +42,6 @@
       el.querySelector(countSelector).textContent = String(value);
       el.hidden = false;
     }
-  }
-
-  function loadCount(el, prefix, countSelector) {
-    el.setAttribute('data-loaded', '');
-    var path = el.getAttribute('data-path');
-    if (!path) return;
-    fetchValue(keyFor(prefix, path))
-      .then(function (value) { show(el, countSelector, value); })
-      .catch(function () {});
   }
 
   function loadClapCount(el) {
@@ -49,9 +60,6 @@
     var scope = root || document;
     scope.querySelectorAll('.post-item-claps:not([data-loaded])').forEach(function (el) {
       loadClapCount(el);
-    });
-    scope.querySelectorAll('.post-item-views:not([data-loaded])').forEach(function (el) {
-      loadCount(el, 'view', '.post-item-view-count');
     });
   }
 
