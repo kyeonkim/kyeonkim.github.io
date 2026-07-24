@@ -201,7 +201,18 @@ img { max-width: 100%; height: auto; }
   font-size: 13px;
   color: var(--text-secondary);
   margin-top: 12px;
+  display: flex;
+  align-items: center;
 }
+.post-item-claps {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+}
+.post-item-claps svg { display: block; }
+.post-item-claps .post-item-meta-dot { margin: 0 2px 0 4px; }
+.post-item-claps[hidden] { display: none; }
 .post-item-thumb {
   flex-shrink: 0;
   width: 160px;

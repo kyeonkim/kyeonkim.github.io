@@ -19,6 +19,7 @@
         doc.querySelectorAll('.post-list .post-item').forEach(function (item) {
           list.appendChild(document.importNode(item, true));
         });
+        if (window.loadListClaps) window.loadListClaps(list);
         var nextSentinel = doc.querySelector('.post-list-sentinel');
         nextUrl = (nextSentinel && nextSentinel.dataset.next) || null;
         busy = false;
