@@ -832,3 +832,43 @@ html:not([data-theme="dark"]) .icon-sun { display: none; }
   color: var(--text-secondary);
 }
 .post-tag:hover { color: var(--text); }
+
+/* Rouge — 다크모드 팔레트 (github-dark 계열) */
+html[data-theme="dark"] .highlight,
+html[data-theme="dark"] .highlight .w { color: #c9d1d9; background: transparent; }
+html[data-theme="dark"] .highlight .k, html[data-theme="dark"] .highlight .kd,
+html[data-theme="dark"] .highlight .kn, html[data-theme="dark"] .highlight .kp,
+html[data-theme="dark"] .highlight .kr, html[data-theme="dark"] .highlight .kt,
+html[data-theme="dark"] .highlight .kv, html[data-theme="dark"] .highlight .kc,
+html[data-theme="dark"] .highlight .o, html[data-theme="dark"] .highlight .ow { color: #ff7b72; }
+html[data-theme="dark"] .highlight .nb, html[data-theme="dark"] .highlight .nc,
+html[data-theme="dark"] .highlight .no, html[data-theme="dark"] .highlight .nn { color: #ffa657; }
+html[data-theme="dark"] .highlight .na, html[data-theme="dark"] .highlight .nt,
+html[data-theme="dark"] .highlight .nf, html[data-theme="dark"] .highlight .fm { color: #d2a8ff; }
+html[data-theme="dark"] .highlight .s, html[data-theme="dark"] .highlight .sa,
+html[data-theme="dark"] .highlight .sb, html[data-theme="dark"] .highlight .sc,
+html[data-theme="dark"] .highlight .dl, html[data-theme="dark"] .highlight .sd,
+html[data-theme="dark"] .highlight .s2, html[data-theme="dark"] .highlight .se,
+html[data-theme="dark"] .highlight .sh, html[data-theme="dark"] .highlight .si,
+html[data-theme="dark"] .highlight .sx, html[data-theme="dark"] .highlight .sr,
+html[data-theme="dark"] .highlight .s1, html[data-theme="dark"] .highlight .ss { color: #a5d6ff; }
+html[data-theme="dark"] .highlight .l, html[data-theme="dark"] .highlight .ld,
+html[data-theme="dark"] .highlight .m, html[data-theme="dark"] .highlight .mb,
+html[data-theme="dark"] .highlight .mf, html[data-theme="dark"] .highlight .mh,
+html[data-theme="dark"] .highlight .mi, html[data-theme="dark"] .highlight .il,
+html[data-theme="dark"] .highlight .mo, html[data-theme="dark"] .highlight .mx { color: #79c0ff; }
+html[data-theme="dark"] .highlight .c, html[data-theme="dark"] .highlight .ch,
+html[data-theme="dark"] .highlight .cd, html[data-theme="dark"] .highlight .cm,
+html[data-theme="dark"] .highlight .cp, html[data-theme="dark"] .highlight .cpf,
+html[data-theme="dark"] .highlight .c1, html[data-theme="dark"] .highlight .cs { color: #8b949e; }
+html[data-theme="dark"] .highlight .n, html[data-theme="dark"] .highlight .nd,
+html[data-theme="dark"] .highlight .ni, html[data-theme="dark"] .highlight .nl,
+html[data-theme="dark"] .highlight .nx, html[data-theme="dark"] .highlight .p,
+html[data-theme="dark"] .highlight .py, html[data-theme="dark"] .highlight .nv,
+html[data-theme="dark"] .highlight .vc, html[data-theme="dark"] .highlight .vg,
+html[data-theme="dark"] .highlight .vi, html[data-theme="dark"] .highlight .vm,
+html[data-theme="dark"] .highlight .bp { color: #c9d1d9; }
+html[data-theme="dark"] .highlight .gi { color: #aff5b4; background: #033a16; }
+html[data-theme="dark"] .highlight .gd { color: #ffdcd7; background: #67060c; }
+html[data-theme="dark"] .highlight .gh, html[data-theme="dark"] .highlight .gu { color: #79c0ff; }
+html[data-theme="dark"] .highlight .err, html[data-theme="dark"] .highlight .gr { color: #ff7b72; background: transparent; }
