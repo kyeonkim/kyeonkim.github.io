@@ -762,3 +762,33 @@ img { max-width: 100%; height: auto; }
 .theme-toggle:hover { color: var(--text); }
 html[data-theme="dark"] .icon-moon { display: none; }
 html:not([data-theme="dark"]) .icon-sun { display: none; }
+
+/* 목차 (넓은 화면에서만) */
+.post-toc {
+  display: none;
+  position: fixed;
+  top: 140px;
+  left: calc(50% + 380px);
+  width: 240px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+@media (min-width: 1360px) {
+  .post-toc { display: block; }
+}
+.post-toc ul { list-style: none; }
+.post-toc li { margin: 0; }
+.post-toc a {
+  display: block;
+  padding: 4px 0 4px 12px;
+  color: var(--text-secondary);
+  border-left: 2px solid var(--border);
+}
+.post-toc a:hover { color: var(--text); }
+.post-toc a.is-active {
+  color: var(--text);
+  font-weight: 600;
+  border-left-color: var(--text);
+}
