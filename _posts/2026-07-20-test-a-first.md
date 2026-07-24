@@ -4,6 +4,7 @@ title: "테스트 A — 기능 확인용 글"
 author: kyeonkim
 date: 2026-07-20
 category: test
+tags: [테스트, 검색엔진]
 image: assets/images/1.jpg
 description: "클랩 토글, 조회수, 목차, 다크모드 동작을 확인하기 위한 테스트 글."
 ---

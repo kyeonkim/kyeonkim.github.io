@@ -57,6 +57,14 @@ layout: default
   </div>
   <script src="{{ site.baseurl }}/assets/js/toc.js" defer></script>
 
+  {% if page.tags.size > 0 %}
+  <div class="post-tags">
+    {% for tag in page.tags %}
+    <a class="post-tag" href="{{ site.baseurl }}/?tag={{ tag | url_encode }}">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
   <nav class="post-nav">
     <div class="post-nav-item post-nav-prev">
       {% if page.previous %}
