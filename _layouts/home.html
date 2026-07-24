@@ -53,7 +53,10 @@ layout: default
     <img class="sidebar-avatar" src="{{ site.baseurl }}/{{ author.avatar }}" alt="{{ author.display_name }}">
     <div class="sidebar-name">{{ author.display_name }}</div>
     <p class="sidebar-bio">{{ author.description }}</p>
-    <a class="sidebar-link" href="{{ author.web }}" target="_blank" rel="noopener">{{ author.web | remove: "https://" }}</a>
+    <div class="sidebar-link-row">
+      <span class="sidebar-link-label">Github</span>
+      <a class="sidebar-link" href="{{ author.web }}" target="_blank" rel="noopener">{{ author.web | remove: "https://" }}</a>
+    </div>
   </aside>
 
 </div>
