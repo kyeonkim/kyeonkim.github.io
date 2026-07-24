@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{% assign author = site.authors.kyeonkim %}
+<div class="profile-wrap">
+
+  <div class="profile-main">
+    <h1 class="profile-name">{{ site.name }}</h1>
+
+    <nav class="profile-tabs">
+      <a href="{{ site.baseurl }}/" class="{% if page.layout == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ site.baseurl }}/about" class="{% if page.url == '/about' %}active{% endif %}">About</a>
+    </nav>
+
+    <div class="post-list">
+      {% for post in paginator.posts %}
+      <article class="post-item">
+        <div class="post-item-body">
+          <div class="post-item-date">{{ post.date | date: "%Y년 %-m월 %-d일" }}</div>
+          <a class="post-item-link" href="{{ post.url | prepend: site.baseurl }}">
+            <h2 class="post-item-title">{{ post.title }}</h2>
+            <p class="post-item-excerpt">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | normalize_whitespace | truncate: 150 }}{% endif %}</p>
+          </a>
+          {% assign words = post.content | strip_html | number_of_words %}
+          <div class="post-item-meta">{{ words | divided_by: 250 | plus: 1 }} min read</div>
+        </div>
+        {% if post.image %}
+        <a class="post-item-thumb" href="{{ post.url | prepend: site.baseurl }}">
+          <img src="{{ site.baseurl }}/{{ post.image }}" alt="" loading="lazy">
+        </a>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination">
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">&larr; 이전</a>
+      {% else %}<span></span>{% endif %}
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">다음 &rarr;</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+
+  <aside class="profile-sidebar">
+    <img class="sidebar-avatar" src="{{ site.baseurl }}/{{ author.avatar }}" alt="{{ author.display_name }}">
+    <div class="sidebar-name">{{ author.display_name }}</div>
+    <p class="sidebar-bio">{{ author.description }}</p>
+    <a class="sidebar-link" href="{{ author.web }}" target="_blank" rel="noopener">GitHub</a>
+  </aside>
+
+</div>
