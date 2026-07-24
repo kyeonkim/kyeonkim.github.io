@@ -296,6 +296,55 @@ img { max-width: 100%; height: auto; }
 }
 .post-meta-author { color: var(--text); }
 
+/* Back button */
+.post-back {
+  display: inline-block;
+  background: none;
+  border: 0;
+  padding: 4px 8px 4px 0;
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.post-back:hover { color: var(--text); }
+
+/* Share button */
+.post-share {
+  position: relative;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+.post-share-button {
+  background: none;
+  border: 0;
+  padding: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  transition: color 0.15s;
+}
+.post-share-button:hover { color: var(--text); }
+.post-share-tooltip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  white-space: nowrap;
+  background: var(--text);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.post-share-tooltip.is-visible { opacity: 1; }
+
 /* Post body */
 .post-content {
   font-family: var(--serif);
@@ -409,6 +458,33 @@ img { max-width: 100%; height: auto; }
   color: var(--text-secondary);
 }
 
+/* Prev / next navigation */
+.post-nav {
+  display: flex;
+  gap: 24px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.post-nav-item { flex: 1; min-width: 0; }
+.post-nav-next { text-align: right; }
+.post-nav-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.post-nav-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.post-nav-item a:hover .post-nav-title { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Comments */
+.post-comments { margin-top: 56px; }
+
 /* Footer
    ========================================================================== */
 .site-footer {
@@ -445,6 +521,8 @@ img { max-width: 100%; height: auto; }
   .post-content { font-size: 18px; line-height: 1.85; }
   .post-content h2 { font-size: 23px; }
   .post-content h3 { font-size: 19px; }
+  .post-nav { flex-direction: column; gap: 20px; }
+  .post-nav-next { text-align: left; }
 }
 
 /* Rouge syntax highlighting (github style) */
