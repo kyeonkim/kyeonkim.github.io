@@ -316,6 +316,12 @@ img { max-width: 100%; height: auto; }
   gap: 8px;
 }
 .post-meta-views[hidden] { display: none; }
+.post-meta-views-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.post-meta-views-label svg { display: block; }
 
 /* Back button */
 .post-back {
@@ -387,7 +393,6 @@ img { max-width: 100%; height: auto; }
 }
 .post-clap.is-maxed .post-clap-button {
   color: var(--accent, #1A8917);
-  cursor: default;
 }
 
 /* Share button */

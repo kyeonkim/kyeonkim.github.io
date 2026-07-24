@@ -18,7 +18,7 @@ layout: default
       <span class="post-meta-dot">&middot;</span>
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %-m월 %-d일" }}</time>
       <span class="post-meta-views" hidden><span class="post-meta-dot">&middot;</span>
-      <span>조회 <span class="post-meta-view-count"></span></span></span>
+      <span class="post-meta-views-label" title="조회수"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span class="post-meta-view-count"></span></span></span>
     </div>
     <div class="post-actions">
       <div class="post-actions-left">
@@ -106,50 +106,69 @@ layout: default
 (function () {
   var API = 'https://abacus.jasoncameron.dev';
   var NAMESPACE = 'kyeonkim-blog';
-  var MAX_CLAPS = 1;
-  var key = ('clap' + location.pathname).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
+  function keyFor(prefix) {
+    return (prefix + location.pathname).replace(/[^A-Za-z0-9._-]+/g, '-').replace(/-+$/, '');
+  }
+  var keyUp = keyFor('clap');
+  var keyDown = keyFor('clapdn');
   var storageKey = 'claps:' + location.pathname;
   var clap = document.querySelector('.post-clap');
   var countEl = clap.querySelector('.post-clap-count');
-  var count = null;
+  var up = null;
+  var down = 0;
+  var pending = false;
 
-  function myClaps() {
-    try { return parseInt(localStorage.getItem(storageKey), 10) || 0; } catch (e) { return 0; }
+  function clapped() {
+    try { return (parseInt(localStorage.getItem(storageKey), 10) || 0) >= 1; } catch (e) { return false; }
+  }
+
+  function setClapped(on) {
+    try { localStorage.setItem(storageKey, on ? '1' : '0'); } catch (e) {}
   }
 
   function render() {
-    countEl.textContent = count === null ? '' : String(count);
-    if (myClaps() >= MAX_CLAPS) clap.classList.add('is-maxed');
+    countEl.textContent = up === null ? '' : String(Math.max(0, up - down));
+    clap.classList.toggle('is-maxed', clapped());
+  }
+
+  function fetchValue(path) {
+    return fetch(API + path).then(function (res) {
+      if (res.status === 404) return { value: 0 };
+      if (!res.ok) return null;
+      return res.json();
+    });
   }
 
   window.clapPost = function (btn) {
-    var mine = myClaps();
-    if (mine >= MAX_CLAPS) return;
-    try { localStorage.setItem(storageKey, String(mine + 1)); } catch (e) {}
-    count = (count || 0) + 1;
+    if (pending) return;
+    pending = true;
+    var cancel = clapped();
+    setClapped(!cancel);
+    if (up !== null) { if (cancel) down += 1; else up += 1; }
     render();
     btn.classList.remove('is-clapped');
     void btn.offsetWidth;
     btn.classList.add('is-clapped');
-    fetch(API + '/hit/' + NAMESPACE + '/' + key)
-      .then(function (res) { return res.json(); })
+    fetchValue('/hit/' + NAMESPACE + '/' + (cancel ? keyDown : keyUp))
       .then(function (data) {
-        if (data && typeof data.value === 'number') { count = data.value; render(); }
+        if (!data || typeof data.value !== 'number') throw new Error('hit failed');
+        if (cancel) down = data.value; else up = data.value;
       })
-      .catch(function () {});
+      .catch(function () {
+        setClapped(cancel);
+        if (up !== null) { if (cancel) down -= 1; else up -= 1; }
+      })
+      .then(function () { pending = false; render(); });
   };
 
-  fetch(API + '/get/' + NAMESPACE + '/' + key)
-    .then(function (res) {
-      if (res.status === 404) return { value: 0 };
-      if (!res.ok) return null;
-      return res.json();
-    })
-    .then(function (data) {
-      if (data && typeof data.value === 'number') { count = data.value; }
-      render();
-    })
-    .catch(function () { render(); });
+  Promise.all([
+    fetchValue('/get/' + NAMESPACE + '/' + keyUp),
+    fetchValue('/get/' + NAMESPACE + '/' + keyDown)
+  ]).then(function (results) {
+    if (results[0] && typeof results[0].value === 'number') up = results[0].value;
+    if (results[1] && typeof results[1].value === 'number') down = results[1].value;
+    render();
+  }).catch(function () { render(); });
 
   render();
 })();
