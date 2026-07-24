@@ -15,7 +15,18 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <a class="site-logo" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <div class="site-header-left">
+      <a class="site-logo" href="{{ site.baseurl }}/">{{ site.title }}</a>
+      <div class="site-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.7"/>
+          <line x1="15.4" y1="15.4" x2="20.3" y2="20.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <input type="search" id="search-input" placeholder="Search" autocomplete="off"
+               data-src="{{ site.baseurl }}/search.json" aria-label="Search">
+        <div class="search-results" id="search-results" hidden></div>
+      </div>
+    </div>
     <nav class="site-nav">
       <a href="{{ site.baseurl }}/about">About</a>
       <a href="https://github.com/kyeonkim" target="_blank" rel="noopener">GitHub</a>
@@ -33,6 +44,8 @@
     <a href="{{ site.baseurl }}/feed.xml">RSS</a>
   </div>
 </footer>
+
+<script src="{{ site.baseurl }}/assets/js/search.js" defer></script>
 
 </body>
 </html>
