@@ -872,3 +872,32 @@ html[data-theme="dark"] .highlight .gi { color: #aff5b4; background: #033a16; }
 html[data-theme="dark"] .highlight .gd { color: #ffdcd7; background: #67060c; }
 html[data-theme="dark"] .highlight .gh, html[data-theme="dark"] .highlight .gu { color: #79c0ff; }
 html[data-theme="dark"] .highlight .err, html[data-theme="dark"] .highlight .gr { color: #ff7b72; background: transparent; }
+
+/* 마크다운 복사 버튼 */
+.post-actions-right { display: flex; align-items: center; gap: 20px; }
+.post-md { position: relative; display: inline-flex; }
+.post-md-button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: inline-flex;
+  padding: 0;
+}
+.post-md-button:hover { color: var(--text); }
+.post-md-tooltip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  white-space: nowrap;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.post-md-tooltip.is-visible { opacity: 1; }
